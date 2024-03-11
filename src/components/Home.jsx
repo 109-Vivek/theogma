@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 const Home = () => {
-  const backgroundImageUrl = 'url("../../public/images/background.jpg")';
+  const backgroundImageUrl = 'url("/images/background.jpg")';
 
   return (
     <div
