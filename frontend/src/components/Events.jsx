@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+
+
 
 const Events = () => {
   const [events, setEvents] = useState([]);
@@ -10,7 +11,7 @@ const Events = () => {
   }, []);
 
   async function fetchEvents() {
-    const response = await axios.get("http://localhost:3000/user/events");
+    const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/user/events`);
     setEvents(response.data.events);
   }
 

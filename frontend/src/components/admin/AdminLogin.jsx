@@ -12,7 +12,7 @@ const AdminLogin = () => {
    const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/admin/sign-in", { username, password })
+      const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/admin/sign-in`, { username, password })
       if(response.data === "Invalid Username" || response.data === "Incorrect Password")
       {
         toast.error(response.data);

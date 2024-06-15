@@ -14,7 +14,7 @@ const Gallery = () => {
   }, []);
 
   const getGalleryEvents = async () => {
-    const response = await axios.get("http://localhost:3000/user/gallery");
+    const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/user/gallery`);
     setGalleryEvents(response.data.galleryEvents);
     
   };

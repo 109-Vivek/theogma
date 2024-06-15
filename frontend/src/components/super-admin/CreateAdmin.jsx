@@ -12,7 +12,7 @@ const CreateAdmin = ({getAdmins}) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/super-admin/create-admin",
+        `${import.meta.env.VITE_SERVER_URL}/super-admin/create-admin`,
         { name, username, password },
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
