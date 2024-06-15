@@ -13,7 +13,7 @@ const SuperAdminDashboard = () => {
   async function getAdmins() {
     try {
       const response = await axios.get(
-        "http://localhost:3000/super-admin/list-admins",
+        `${import.meta.env.VITE_SERVER_URL}/super-admin/list-admins`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -29,7 +29,7 @@ const SuperAdminDashboard = () => {
   async function handleDelete(_id)
   {
     try{
-      const response = await axios.delete("http://localhost:3000/super-admin/delete-admin", {
+      const response = await axios.delete(`${import.meta.env.VITE_SERVER_URL}/super-admin/delete-admin`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

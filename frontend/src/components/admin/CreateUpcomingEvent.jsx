@@ -22,7 +22,7 @@ const CreateUpcomingEvent = () => {
     formData.append("eventImage", eventImage);
 
     try {
-      const response = await axios.post("http://localhost:3000/admin/create-event", formData, {
+      const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/admin/create-event`, formData, {
         headers: {
           "Content-Type": "multipart/form-data", 
           "Authorization": `Bearer ${localStorage.getItem("token")}`,

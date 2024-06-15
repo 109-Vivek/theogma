@@ -20,7 +20,7 @@ const CreateGalleryEvent = () => {
     });
 
     try {
-      const response = await axios.post("http://localhost:3000/admin/create-gallery-event", formData, {
+      const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/admin/create-gallery-event`, formData, {
         headers: {
           "Content-Type": "multipart/form-data", 
           "Authorization": `Bearer ${localStorage.getItem("token")}`,
