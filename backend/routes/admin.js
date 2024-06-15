@@ -35,12 +35,12 @@ router.post("/sign-in", async (req, res) => {
   const { username, password } = req.body;
   const admin = await Admin.findOne({ username });
   if (!admin) {
-    res.json("Mess Admin Not Found");
+    res.json("Invalid Username");
     return;
   } else {
     const match = await bcrypt.compare(password, admin.password);
     if (!match) {
-      res.json("Invalid Username or password");
+      res.json("Incorrect Password");
       return;
     }
 
@@ -73,7 +73,6 @@ router.post(
     });
 
     const response = await Promise.all(imageUrlPromise);
-    console.log(response);
 
     const galleryEvent = await GalleryEvent.create({
       name: name,
@@ -87,7 +86,7 @@ router.post(
 router.post(
   "/create-event",
   authorizeAdmin,
-  upload.single("event-image"),
+  upload.single("eventImage"),
   async (req, res) => {
     const { name, description, registerLink } = req.body;
     const imageLink = await uploadOnCloudinary(req.file.path);

@@ -9,7 +9,7 @@ const { Event, GalleryEvent } = require("../db");
 router.get("/gallery",async (req, res) => {
   try {
     const galleryEvents = await GalleryEvent.find({});
-    res.status(200).json({ galleryEvents });
+    res.status(200).json({ galleryEvents : galleryEvents });
   } catch (err) {
     console.log(err);
     res.status(500).json({ msg: "Internal Server Error" });
