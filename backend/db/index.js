@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 const db_url = process.env.DATABASE_URL;
 
 // Connect to the MongoDB database
-mongoose.connect(db_url)
+mongoose
+  .connect(db_url)
   .then(() => {
     console.log("Connected to the database");
   })
@@ -44,6 +45,45 @@ const adminSchema = new mongoose.Schema({
   },
 });
 
+//Schema for Member
+const memberSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  imageLink: {
+    type: String,
+    default: "",
+  },
+  linkedIn: {
+    type: String,
+    default: "not present",
+  },
+  github: {
+    type: String,
+    default: "not present",
+  },
+  batch: {
+    type: String,
+    required: true,
+  },
+});
+
+//Schema for batch
+const batchSchema = new mongoose.Schema({
+  batchName: {
+    type: Number,
+    required: true,
+    unique : true
+  },
+  members: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Members",
+    },
+  ],
+});
+
 // schema for the Event collection
 const eventSchema = new mongoose.Schema({
   name: {
@@ -79,11 +119,14 @@ const Admin = mongoose.model("Admin", adminSchema);
 const SuperAdmin = mongoose.model("SuperAdmin", superAdminSchema);
 const Event = mongoose.model("Event", eventSchema);
 const GalleryEvent = mongoose.model("GalleryEvent", galleryEventSchema);
-
+const Member = mongoose.model("Member", memberSchema);
+const Batch = mongoose.model("Batch", batchSchema);
 
 module.exports = {
   Admin,
   SuperAdmin,
   Event,
   GalleryEvent,
+  Member,
+  Batch
 };
