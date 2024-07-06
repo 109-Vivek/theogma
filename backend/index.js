@@ -17,8 +17,17 @@ app.use("/user", userRoute);
 app.use("/admin", adminRoute);
 app.use("/super-admin", superAdminRoute);
 
+
+//Global Error Handler
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: 'Internal Server Error' });
+});
+
+
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
   console.log(`Server listening to port ${port}`);
 });
+
