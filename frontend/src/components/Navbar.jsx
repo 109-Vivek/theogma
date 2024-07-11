@@ -41,7 +41,7 @@ export default function Navbar() {
               src={logo}
             />
           </Link>
-          <h2 className="text:2xl sm:text-3xl text-white">THE OGMA</h2>
+          <Link to="/" className="text:2xl sm:text-3xl text-white">THE OGMA</Link>
         </section>
 
         <div className="hidden lg:block ">

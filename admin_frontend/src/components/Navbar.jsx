@@ -35,12 +35,12 @@ export default function Navbar() {
       <div className="w-[min(1100px,100%)] mx-auto flex flex-row justify-between items-center gap-8">
         <section className="flex items-center gap-4">
           {/* Logo*/}
-          <Link to="/" className="text-4xl font-mono">
+          <div className="text-4xl font-mono">
             <img
               className=" h-[2.2rem] sm:h-[3rem] mx-4  rounded-[100%] "
               src={logo}
             />
-          </Link>
+          </div>
           <h2 className="text:2xl sm:text-3xl text-white">THE OGMA</h2>
         </section>
 
