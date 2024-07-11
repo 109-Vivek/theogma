@@ -15,7 +15,6 @@ export default function Navbar() {
       label: "Gallery",
       link: "/gallery",
     },
-    
     {
       label: "Events",
       link: "/events",
@@ -24,11 +23,12 @@ export default function Navbar() {
       label: "Members",
       link: "/members",
     },
-    {
-      label: "About",
-      link: "/about",
-    },
   ];
+
+  function handleLogout() {
+    localStorage.removeItem("admin_token");
+    window.location.href = "/login";
+  }
 
   return (
     <nav className="w-full top-0 mx-auto sticky rounded-[40px] m-3 flex px-8 items-center py-4 bg-black z-50">
@@ -56,6 +56,13 @@ export default function Navbar() {
               <span className="group-hover:transform  group-hover:scale-100 group-hover:translate-y-0 group-hover:opacity-100 absolute top-0 left-0 w-full h-full border-b-2 border-[#0ef] opacity-0  rounded-2xl transform scale-0 translate-y-10  transition duration-500"></span>
             </NavLink>
           ))}
+          <NavLink
+            onClick={handleLogout}
+            style={{ textDecoration: "none" }}
+            className="group relative text-xl text-[#8b8888] px-5 py-2 transition  hover:text-[#0ef] duration-500"
+          >Logout
+            <span className="group-hover:transform  group-hover:scale-100 group-hover:translate-y-0 group-hover:opacity-100 absolute top-0 left-0 w-full h-full border-b-2 border-[#0ef] opacity-0  rounded-2xl transform scale-0 translate-y-10  transition duration-500"></span>
+          </NavLink>
         </div>
 
         <FiMenu
@@ -89,6 +96,13 @@ export default function Navbar() {
               <span className="group-hover:transform  group-hover:scale-100 group-hover:translate-y-0 group-hover:opacity-100 absolute top-0 left-0 w-full h-full border-b-2 border-[#0ef] opacity-0  rounded-2xl transform scale-0 translate-y-10  transition duration-500"></span>
             </NavLink>
           ))}
+          <NavLink
+            onClick={handleLogout}
+            style={{ textDecoration: "none" }}
+            className="group relative text-xl text-[#8b8888] px-5 py-2 transition  hover:text-[#0ef] duration-500"
+          >Logout
+            <span className="group-hover:transform  group-hover:scale-100 group-hover:translate-y-0 group-hover:opacity-100 absolute top-0 left-0 w-full h-full border-b-2 border-[#0ef] opacity-0  rounded-2xl transform scale-0 translate-y-10  transition duration-500"></span>
+          </NavLink>
         </section>
       </div>
     </nav>

@@ -20,10 +20,9 @@ const SuperAdminLogin = () => {
       }
       else{
         toast.success("Signin Successfull");
-        localStorage.setItem("token",response.data.token);
+        localStorage.setItem("super_admin_token",response.data.token);
         navigateTo("/super-admin/dashboard");
       }
-      console.log("heree")
     }
     catch(error)
     {
@@ -32,7 +31,7 @@ const SuperAdminLogin = () => {
   };
 
   return (
-    <div className="w-full max-w-xs mx-auto mt-8">
+    <div className="w-full h-full max-w-xs mx-auto mt-40  m-40 my-auto">
       <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">

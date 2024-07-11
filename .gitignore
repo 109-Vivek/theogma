@@ -1,3 +1,14 @@
+.DS_Store
+
+# backend 
 backend/.env
+backend/node_modules
+
+# frontend
 frontend/.env
-backend/node_modules/*
+
+# superadmin
+super_admin_frontend/.env
+
+# admin
+admin_frontend/.env

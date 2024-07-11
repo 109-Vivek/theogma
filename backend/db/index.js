@@ -84,6 +84,7 @@ const batchSchema = new mongoose.Schema({
   ],
 });
 
+
 // schema for the Event collection
 const eventSchema = new mongoose.Schema({
   name: {

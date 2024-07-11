@@ -13,9 +13,14 @@ const userRoute = require("./routes/user");
 const adminRoute = require("./routes/admin");
 const superAdminRoute = require("./routes/super-admin");
 
+app.get("/", (req, res) => {
+  res.send("Your backend is up and running");
+});
+
 app.use("/user", userRoute);
 app.use("/admin", adminRoute);
 app.use("/super-admin", superAdminRoute);
+
 
 
 //Global Error Handler

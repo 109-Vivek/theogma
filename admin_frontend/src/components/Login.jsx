@@ -20,8 +20,8 @@ const AdminLogin = () => {
       }
       else{
         toast.success("Signin Successfull");
-        localStorage.setItem("token",response.data.token);
-        navigateTo("/admin/dashboard");
+        localStorage.setItem("admin_token",response.data.token);
+        navigateTo("/gallery");
       }
     }
     catch(error)

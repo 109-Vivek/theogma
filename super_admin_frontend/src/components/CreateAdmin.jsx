@@ -11,11 +11,12 @@ const CreateAdmin = ({getAdmins}) => {
     e.preventDefault();
 
     try {
+        const temp=localStorage.getItem("super_admin_token")
       const response = await axios.post(
         `${import.meta.env.VITE_SERVER_URL}/super-admin/create-admin`,
         { name, username, password },
         {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+          headers: { Authorization: `Bearer ${localStorage.getItem("super_admin_token")}` },
         }
       );
       if (response.data.msg === "Admin Created Successfully") {
@@ -32,7 +33,7 @@ const CreateAdmin = ({getAdmins}) => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded shadow-md">
+    <div className="w-[min(500px,100%)] mx-auto p-4 bg-white text-black rounded shadow-md">
       <h2 className="text-xl font-semibold mb-4">Create Admin</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">

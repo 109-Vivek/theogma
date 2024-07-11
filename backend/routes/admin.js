@@ -55,6 +55,7 @@ router.post("/sign-in", async (req, res) => {
 // 7. The user will then use the image links to display the images
 
 // Create a new gallery event with images
+
 router.post(
   "/create-gallery-event",
   authorizeAdmin,
@@ -70,6 +71,13 @@ router.post(
     });
 
     const response = await Promise.all(imageUrlPromise);
+
+    //Check if there is alredy a evnt with the same name
+    const galleryEventExists = await GalleryEvent.findOne({ name });
+    if (galleryEventExists) {
+      res.status(400).json({ msg: "Event Name already exists" });
+      return;
+    }
 
     const galleryEvent = await GalleryEvent.create({
       name: name,
@@ -155,7 +163,6 @@ router.delete("/delete-batch", authorizeAdmin, async (req, res, next) => {
   try {
     const { batchId } = req.body;
     const batch = await Batch.findById(batchId);
-    console.log(batch);
     if (!batch) {
       res.status(404).json({ msg: "Batch not found" });
       return;
@@ -175,12 +182,12 @@ router.post(
   "/add-member",
   authorizeAdmin,
   upload.single("profileImage"),
-  async (req, res) => {
+  async (req, res, next) => {
     try {
       const { name, linkedIn, github, batchId } = req.body;
       const batch = await Batch.findById(batchId);
-      if(!batch){
-        res.status(404).json({msg: "Batch not found"});
+      if (!batch) {
+        res.status(404).json({ msg: "Batch not found" });
         return;
       }
       const imageLink = await uploadOnCloudinary(req.file.path);
@@ -189,9 +196,9 @@ router.post(
         imageLink,
         linkedIn,
         github,
-        batch : batch.batchName
+        batch: batch.batchName,
       });
-      batch.members.push(member._id); 
+      batch.members.push(member._id);
       await batch.save();
       res.status(200).json({ msg: "Member Added Successfully" });
     } catch (err) {
@@ -201,9 +208,9 @@ router.post(
 );
 
 //delete member from batch
-router.delete("/delete-member", authorizeAdmin, async (req, res,next) => {
+router.post("/delete-member", authorizeAdmin, async (req, res, next) => {
   try {
-    const { memberId } = req.body;
+    const { memberId } = req.body; //can we send json body using axiso in delete request
     const member = await Member.findById(memberId);
 
     if (!member) {
@@ -212,9 +219,9 @@ router.delete("/delete-member", authorizeAdmin, async (req, res,next) => {
     }
 
     //delete from batch
-    const batch = await Batch.findOne({batchName : member.batch});
+    const batch = await Batch.findOne({ batchName: member.batch });
     const index = batch.members.indexOf(memberId);
-    batch.members.splice(index, 1); 
+    batch.members.splice(index, 1);
     await batch.save();
 
     //delete member
@@ -225,6 +232,19 @@ router.delete("/delete-member", authorizeAdmin, async (req, res,next) => {
   }
 });
 
-//get members
 
+//get member by member id
+router.post("/get-member", authorizeAdmin, async (req, res, next) => {
+  try {
+    const { memberId } = req.body;
+    const member = await Member.findById(memberId);
+    if (!member) {
+      res.status(404).json({ msg: "Member not found" });
+      return;
+    }
+    res.status(200).json(member);
+  } catch (err) {
+    next(err);
+  }
+});
 module.exports = router;
