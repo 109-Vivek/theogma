@@ -8,11 +8,11 @@ Admins can add newly inducted members (pending)
 
 [ Website Link ](https://theogma.vercel.app/)
 
-### [Super Admin Credentials : ](https://theogma.vercel.app/super-admin/login)
+### [Super Admin Credentials : ](https://theogma-super-admin.vercel.app/)
  Username: vivekyadavnitt@gmail.com\
  Password: vivek
 
-### [Admin Credentials : ](https://theogma.vercel.app/admin/login)
+### [Admin Credentials : ](https://theogma-admin.vercel.app/))
  Username: ram@gmail.com\
  Password: ram
 
