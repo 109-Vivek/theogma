@@ -12,7 +12,7 @@ Admins can add newly inducted members (pending)
  Username: vivekyadavnitt@gmail.com\
  Password: vivek
 
-### [Admin Credentials : ](https://theogma-admin.vercel.app/))
+### [Admin Credentials ](https://theogma-admin.vercel.app/)
  Username: ram@gmail.com\
  Password: ram
 
