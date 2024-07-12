@@ -4,7 +4,7 @@ Super Admin can create and delete admins
 
 Admins can create a gallery event (images of past events or workshops)
 Admin can post an upcoming workshop or event (image description and link)
-Admins can add newly inducted members (pending)
+Admins can add newly inducted members 
 
 [ Website Link ](https://theogma.vercel.app/)
 
